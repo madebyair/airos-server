@@ -1,0 +1,21 @@
+{
+    "name": "madebyair/airos-server",
+    "description": "🦔 ・The best and easy to use server manager",
+    "type": "project",
+    "require": {
+        "react/event-loop": "^1.5",
+        "react/http": "^1.9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Server\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oskar Nizioł",
+            "email": "oskarniziol@gmail.com"
+        }
+    ]
+}
