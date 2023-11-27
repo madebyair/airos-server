@@ -17,9 +17,7 @@ class Server
         Logger::info("Starting new airos server instance.");
 
         $this->server = new HttpServer(function (ServerRequestInterface $request) {
-            return Response::json([
-                "object" => "info"
-            ]);
+            return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod()));
         });
 
         $this->socket = new SocketServer('127.0.0.1:7069');
