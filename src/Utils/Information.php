@@ -6,7 +6,11 @@ class Information
 {
     public function index() : array {
         return [
-            "object" => "info"
+            "object" => "info",
+            "data" => [
+                "version" => Version::$version,
+                "channel" => Version::$channel
+            ]
         ];
     }
 }
