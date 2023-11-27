@@ -1,6 +1,6 @@
 <?php
 require "vendor/autoload.php";
 
-use Server\Utils\Logger;
+use Server\Server;
 
-Logger::info("Starting new airos instance");
+(new Server())->start();
