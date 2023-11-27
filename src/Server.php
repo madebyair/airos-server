@@ -2,6 +2,7 @@
 
 namespace Server;
 
+use Server\Migration\CheckMigrations;
 use Server\Utils\Logger;
 
 use React\Http\HttpServer;
@@ -15,6 +16,8 @@ class Server
     private SocketServer $socket;
     public function start() : void {
         Logger::info("Starting new airos server instance.");
+
+        CheckMigrations::checkMigrations();
 
         $this->server = new HttpServer(function (ServerRequestInterface $request) {
             return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod()));

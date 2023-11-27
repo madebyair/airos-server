@@ -2,6 +2,8 @@
 
 namespace Server\Utils;
 
+use Server\Migration\MigrationStatus;
+
 class Information
 {
     public function index() : array {
@@ -9,7 +11,8 @@ class Information
             "object" => "info",
             "data" => [
                 "version" => Version::$version,
-                "channel" => Version::$channel
+                "channel" => Version::$channel,
+                "migration_status" => MigrationStatus::getStatus()
             ]
         ];
     }
