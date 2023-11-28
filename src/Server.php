@@ -2,6 +2,7 @@
 
 namespace Server;
 
+use Server\Database\StartDatabase;
 use Server\Migration\CheckMigrations;
 use Server\Utils\Logger;
 
@@ -18,6 +19,7 @@ class Server
         Logger::info("Starting new airos server instance.");
 
         CheckMigrations::checkMigrations();
+        (new StartDatabase())->start();
 
         $this->server = new HttpServer(function (ServerRequestInterface $request) {
             return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod()));
