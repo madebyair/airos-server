@@ -36,7 +36,7 @@ class Server
         $this->services = ScanServices::scanServices();
 
         $this->server = new HttpServer(function (ServerRequestInterface $request) {
-            return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod()));
+            return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod(), $request));
         });
 
         $this->socket = new SocketServer('127.0.0.1:7069');
