@@ -6,6 +6,7 @@ use Server\Database\Database;
 use Server\Database\StartDatabase;
 use Server\Loaders\UserLoader;
 use Server\Migration\CheckMigrations;
+use Server\Migration\ScanServices;
 use Server\Utils\Logger;
 
 use React\Http\HttpServer;
@@ -20,6 +21,8 @@ class Server
 
     private array $users = [];
 
+    private array $services = [];
+
     public function start() : void {
         Logger::info("Starting new airos server instance.");
 
@@ -29,6 +32,8 @@ class Server
         sleep(1);
         Database::query("INFO for database;");
         $this->loadUsers();
+
+        $this->services = ScanServices::scanServices();
 
         $this->server = new HttpServer(function (ServerRequestInterface $request) {
             return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod()));
