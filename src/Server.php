@@ -2,6 +2,7 @@
 
 namespace Server;
 
+use Server\Database\Database;
 use Server\Database\StartDatabase;
 use Server\Migration\CheckMigrations;
 use Server\Utils\Logger;
@@ -20,6 +21,8 @@ class Server
 
         CheckMigrations::checkMigrations();
         (new StartDatabase())->start();
+        sleep(1);
+        Database::query("INFO for database;");
 
         $this->server = new HttpServer(function (ServerRequestInterface $request) {
             return Response::json(Router::route($request->getUri()->getPath(), $request->getMethod()));

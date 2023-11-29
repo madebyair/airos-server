@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "react/event-loop": "^1.5",
-        "react/http": "^1.9"
+        "react/http": "^1.9",
+        "guzzlehttp/guzzle": "^7.8"
     },
     "license": "MIT",
     "autoload": {
