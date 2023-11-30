@@ -5,7 +5,8 @@
     "require": {
         "react/event-loop": "^1.5",
         "react/http": "^1.9",
-        "guzzlehttp/guzzle": "^7.8"
+        "guzzlehttp/guzzle": "^7.8",
+        "ramsey/uuid": "^4.7"
     },
     "license": "MIT",
     "autoload": {
